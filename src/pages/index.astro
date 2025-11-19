@@ -3,21 +3,29 @@ import "../styles.css";
 ---
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>TestShop — Home</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
+
   <body>
-    <header><h1>TestShop (Serverless)</h1></header>
-    <main class="card">
-      <p>Welcome — simple testing site deployed on Cloudflare Pages + Functions.</p>
-      <nav>
-        <a class="btn" href="/login">Login</a>
-        <a class="btn" href="/register">Register</a>
-        <a class="btn" href="/catalog">Catalog</a>
-        <a class="btn" href="/ip">IP Checker</a>
-        <a class="btn" href="/headers">Header Checker</a>
-      </nav>
-    </main>
-    <footer>Made for testing — not production</footer>
+    <div class="container">
+      <h1>Welcome to Astro + Cloudflare</h1>
+
+      <p>This is your serverless Astro application.</p>
+
+      <a href="/login">
+        <button>Go to Login Page</button>
+      </a>
+
+      <p style="margin-top:20px;">
+        Your IP: <span id="ip">Loading...</span>
+      </p>
+    </div>
+
+    <script>
+      fetch("/api/ip")
+        .then(r => r.json())
+        .then(d => document.getElementById("ip").innerText = d.ip);
+    </script>
   </body>
 </html>
