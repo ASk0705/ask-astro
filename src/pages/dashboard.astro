@@ -1,0 +1,22 @@
+---
+import "../styles.css";
+---
+<html>
+  <body>
+    <main class="card">
+      <h2>Dashboard</h2>
+      <nav>
+        <a class="btn" href="/catalog">Catalog</a>
+        <a class="btn" href="/cart">Cart</a>
+        <a class="btn" href="/contact">Contact</a>
+      </nav>
+      <p><button id="btnLogout" class="btn">Logout</button></p>
+    </main>
+    <script type="module">
+      document.getElementById('btnLogout').addEventListener('click', async () => {
+        await fetch('/api/logout', { method:'POST' });
+        window.location = '/';
+      });
+    </script>
+  </body>
+</html>
